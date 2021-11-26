@@ -16,22 +16,28 @@ const Form = (TaskListId) => {
 		id: null,
 		completed: false
 	  };
-
-	fetch(HOST_API + "/todo", {
-		method: "POST",
-		body: JSON.stringify(request),
-		headers: {
-			'Content-Type': 'application/json'
+    const vsExprReg = /[A-Za-z0-9_]/; 
+    if(vsExprReg.test(request.name)) {
+        document.querySelector(".alert").innerHTML = "";
+        fetch(HOST_API + "/todo", {
+            method: "POST",
+            body: JSON.stringify(request),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+            })
+            .then(response => response.json())
+            .then((todo) => {
+                dispatch({ type: "add-item", item: todo });
+                setState({ name: "" });
+                formRef.current.reset();
+            });
+        } 
+        else{
+			document.querySelector(".alert").innerHTML = "Solo utilice caracteres Alfanuméricos";
 		}
-		})
-		.then(response => response.json())
-		.then((todo) => {
-			dispatch({ type: "add-item", item: todo });
-			setState({ name: "" });
-			formRef.current.reset();
-		});
-	} 
-	}
+	  }
+  
   
 	const onEdit = (event) => {
 	  event.preventDefault();
@@ -64,6 +70,8 @@ const Form = (TaskListId) => {
 	  }} />
 	  {item.id && <button onClick={onEdit} disabled={!state.name}>Actualizar</button>}
 	  {!item.id && <button onClick={onAdd} disabled={!state.name}>Agregar</button>}
+      <div className="alert"></div>
 	</form>
 	
 export default Form;
+}
