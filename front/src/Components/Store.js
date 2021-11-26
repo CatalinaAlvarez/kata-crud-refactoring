@@ -2,7 +2,8 @@ import React ,{createContext, useReducer} from 'react';
 import Reducer from './Reducer';
 
 const initialState = { 
-	todo:{ todoList: [], item: {}}
+	todo:{ todoList: [], item: {}},
+    task:{ taskList: [], item: {}}
 };
 
 const Store = createContext(initialState);
