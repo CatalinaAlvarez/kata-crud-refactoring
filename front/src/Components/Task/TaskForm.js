@@ -42,6 +42,7 @@ const TaskForm = () => {
 			setState({ ...state, name: event.target.value })
 		}} />
 		<button onClick={onAdd} disabled={!state.name}>Nueva Lista</button>
+        <div className="alert"></div>
 	</form>
 	;
 }

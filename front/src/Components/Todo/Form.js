@@ -14,6 +14,7 @@ const Form = (TaskListId) => {
 	  const request = {
 		name: state.name,
 		id: null,
+		idList: TaskListId.TaskListId,
 		completed: false
 	  };
     const vsExprReg = /[A-Za-z0-9_]/; 
