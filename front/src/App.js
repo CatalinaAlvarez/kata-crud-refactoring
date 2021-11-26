@@ -1,5 +1,6 @@
-import { StoreProvider } from "./components/common/Store";
-import Form from "./Components/Form";
+import React from "react";
+import { StoreProvider } from "./Components/Store";
+import Form from "./Components/Todo/Form";
 import List from "./Components/List";
 
 function App() {

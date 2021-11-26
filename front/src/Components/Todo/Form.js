@@ -1,6 +1,6 @@
 import React, {useRef, useState, useContext} from 'react';
-import Store from '../common/Store';
-import HOST_API from '../common/Connection';
+import Store from '../Store';
+import HOST_API from '../Connection';
 
 const Form = (TaskListId) => {
 	const formRef = useRef(null);
@@ -72,6 +72,5 @@ const Form = (TaskListId) => {
 	  {!item.id && <button onClick={onAdd} disabled={!state.name}>Agregar</button>}
       <div className="alert"></div>
 	</form>
-	
+}	
 export default Form;
-}

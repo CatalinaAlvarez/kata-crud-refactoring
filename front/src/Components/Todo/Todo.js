@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import {StoreProvider} from "./Store";
+import {StoreProvider} from "../Store";
 import List from "./List";
 import Form from "./Form";
 
