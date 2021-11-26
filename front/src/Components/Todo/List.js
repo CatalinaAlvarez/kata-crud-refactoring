@@ -66,6 +66,7 @@ const List = (TaskListId) => {
 						<td>{item.id}</td>
 						<td>{item.name}</td>
 						<td>
+						<input type="checkbox" defaultChecked={item.completed} onChange={(event) => onEditComplete(event, item)} className="CheckComplete"/>
 						</td>
 						<td><button onClick={() => onEdit(item)}>Editar</button></td>
 						<td><button onClick={() => onDelete(item.id)}>Eliminar</button></td>
