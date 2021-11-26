@@ -1,0 +1,69 @@
+import React, {useRef, useState, useContext} from 'react';
+import Store from '../common/Store';
+import HOST_API from '../common/Connection';
+
+const Form = (TaskListId) => {
+	const formRef = useRef(null);
+	const { dispatch, state: { todo } } = useContext(Store);
+	const item = todo.item;
+	const [state, setState] = useState(item);
+  
+	const onAdd = (event) => {
+	  event.preventDefault();
+  
+	  const request = {
+		name: state.name,
+		id: null,
+		completed: false
+	  };
+
+	fetch(HOST_API + "/todo", {
+		method: "POST",
+		body: JSON.stringify(request),
+		headers: {
+			'Content-Type': 'application/json'
+		}
+		})
+		.then(response => response.json())
+		.then((todo) => {
+			dispatch({ type: "add-item", item: todo });
+			setState({ name: "" });
+			formRef.current.reset();
+		});
+	} 
+	}
+  
+	const onEdit = (event) => {
+	  event.preventDefault();
+  
+	  const request = {
+		name: state.name,
+		id: item.id,
+		idList: TaskListId.TaskListId,
+		completed: item.isCompleted
+	  };
+  
+	  fetch(HOST_API + "/todo", {
+		method: "PUT",
+		body: JSON.stringify(request),
+		headers: {
+		  'Content-Type': 'application/json'
+		}
+	  })
+		.then(response => response.json())
+		.then((todo) => {
+		  dispatch({ type: "update-item", item: todo });
+		  setState({ name: "" });
+		  formRef.current.reset();
+		});
+	}
+  
+	return <form ref={formRef} className="bar">
+	  <input type="text" name="name" defaultValue={item.name} onChange={(event) => {
+		setState({ ...state, name: event.target.value })
+	  }} />
+	  {item.id && <button onClick={onEdit} disabled={!state.name}>Actualizar</button>}
+	  {!item.id && <button onClick={onAdd} disabled={!state.name}>Agregar</button>}
+	</form>
+	
+export default Form;
