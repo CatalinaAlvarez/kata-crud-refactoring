@@ -75,7 +75,6 @@ const List = (TaskListId) => {
 			</tbody>
 		</table>
 	</div>
-
 }
 
 export default List;
