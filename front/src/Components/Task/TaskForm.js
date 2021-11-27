@@ -37,13 +37,16 @@ const TaskForm = () => {
 		}
 	}
 
-	return <form className="formList" ref={formRef}>
-		<input type="text" name="name" className="taskForm" placeholder="Ingrese el nombre de la lista" defaultValue={item.name} onChange={(event) => {
-			setState({ ...state, name: event.target.value })
-		}} />
-		<button onClick={onAdd} disabled={!state.name}>Nueva Lista</button>
-        <div className="alert"></div>
-	</form>
+	return <div className="pt-10">
+		<h3>To-Do List</h3>
+		<form className="formList" ref={formRef} className="input-group mb-3">
+			<input className="form-control" type="text" name="name" placeholder="Ingrese el nombre de la lista" defaultValue={item.name} onChange={(event) => {
+				setState({ ...state, name: event.target.value })
+			}} />
+			<button id = "eliminar" className="btn btn-primary" onClick={onAdd} disabled={!state.name}>Nueva Lista</button>
+			<div className="alert"></div>
+		</form>
+	</div>
 	;
 }
 

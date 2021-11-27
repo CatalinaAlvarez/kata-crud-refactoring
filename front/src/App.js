@@ -4,11 +4,13 @@ import TaskForm from "./Components/Task/TaskForm";
 import TaskList from "./Components/Task/TaskList";
 
 function App() {
-  return <StoreProvider>
-    <h3>To-Do List</h3>
-    <TaskForm />
-		<TaskList />
-  </StoreProvider>
+  return <div className= "container text-center">
+      <StoreProvider>
+        <TaskForm />
+        <TaskList />
+    </StoreProvider>
+  </div>
+  
 }
 
 export default App;

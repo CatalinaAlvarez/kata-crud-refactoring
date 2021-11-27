@@ -51,7 +51,7 @@ const List = (TaskListId) => {
 	}
 
 	return <div>
-		<table>
+		<table className="table text-center">
 			<thead>
 				<tr>
 					<td>ID</td>
@@ -66,10 +66,10 @@ const List = (TaskListId) => {
 						<td>{item.id}</td>
 						<td>{item.name}</td>
 						<td>
-						<input type="checkbox" defaultChecked={item.completed} onChange={(event) => onEditComplete(event, item)} className="CheckComplete"/>
+						<input type="checkbox"  defaultChecked={item.completed} onChange={(event) => onEditComplete(event, item)} className="CheckComplete"/>
 						</td>
-						<td><button onClick={() => onEdit(item)}>Editar</button></td>
-						<td><button onClick={() => onDelete(item.id)}>Eliminar</button></td>
+						<td><button className="btn btn-info" onClick={() => onEdit(item)}>Editar</button></td>
+						<td><button className="btn btn-danger" onClick={() => onDelete(item.id)}>Eliminar</button></td>
 					</tr>
 				})}
 			</tbody>

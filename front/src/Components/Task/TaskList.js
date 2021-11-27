@@ -34,12 +34,12 @@ const TaskList = () => {
 		})
 	};
 
-	return <div>
+	return <div class="row text-center d-flex justify-content-center">
 		{currentList.map((item) => {
-			return <div key={item.id}>
+			return <div className="col col-sm-12  col-md-8  col-sm-12 padre" id="card" key={item.id}>
 				<div>
 					<h2>{item.name}</h2>
-					<button onClick={() => onDeleteTask(item.id)}>Eliminar</button>
+					<button className="btn btn-danger hijo" onClick={() => onDeleteTask(item.id)}>Eliminar</button>
 					<Form TaskListId={item.id} />
 					<List TaskListId={item.id} />
 				</div>
